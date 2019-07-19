@@ -1,7 +1,8 @@
-package com.farahaniconsulting.eechat
+package com.farahaniconsulting.eechat.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.farahaniconsulting.eechat.R
 
 class MainActivity : AppCompatActivity() {
 
