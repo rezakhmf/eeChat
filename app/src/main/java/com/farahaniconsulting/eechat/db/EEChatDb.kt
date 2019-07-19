@@ -10,10 +10,11 @@ import com.farahaniconsulting.eechat.vo.Message
 @Database(
     entities = [
         Inbox::class,
-        Message::class
-                ], version = 0, exportSchema = false)
+        Message::class],
+    version = 0,
+    exportSchema = false)
 abstract class EEChatDb: RoomDatabase() {
 
-    abstract fun inboxDao():
-    abstract fun repoDao():
+    abstract fun inboxDao(): InboxDao
+    abstract fun messDao(): MessageDao
 }

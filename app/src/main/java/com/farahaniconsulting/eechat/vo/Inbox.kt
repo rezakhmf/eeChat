@@ -5,7 +5,7 @@ import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "Inbox")
+@Entity(tableName = "inbox")
 data class Inbox(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")

@@ -6,7 +6,7 @@ import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 import java.util.*
 
-@Entity(tableName = "Message",
+@Entity(tableName = "message",
     foreignKeys = arrayOf(
         ForeignKey(
         entity = Inbox::class,

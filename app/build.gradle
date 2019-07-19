@@ -31,6 +31,12 @@ dependencies {
     implementation deps.support.design
     implementation deps.support.constraintlayout
 
+    // Life cycle
+    kapt deps.lifecycle.compiler
+    implementation deps.lifecycle.runtime
+    implementation deps.lifecycle.extensions
+    implementation deps.lifecycle.java8
+
     // Dagger 2
     implementation deps.dagger.dagger
     annotationProcessor deps.dagger.compiler
@@ -49,4 +55,5 @@ dependencies {
     // Test
     testImplementation deps.test.junit
     androidTestImplementation deps.test.runner
+    testImplementation deps.test.lifecycle
 }

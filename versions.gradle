@@ -8,6 +8,7 @@ versions.support = "1.0.0"
 versions.constraint_layout = "1.1.3"
 versions.dagger = "2.22.1"
 versions.room = "2.2.0-alpha01"
+versions.lifecycle = "2.0.0"
 versions.junit = "4.12"
 versions.test_runner = "1.1.0"
 
@@ -35,13 +36,13 @@ support.recyclerview = "androidx.recyclerview:recyclerview:$versions.support"
 support.constraintlayout = "androidx.constraintlayout:constraintlayout:$versions.constraint_layout"
 deps.support = support
 
-def dagger = [:]
-dagger.dagger = "com.google.dagger:dagger:$versions.dagger"
-dagger.compiler = "com.google.dagger:dagger-compiler:$versions.dagger"
-dagger.android = "com.google.dagger:dagger-android:$versions.dagger"
-dagger.androidsupport = "com.google.dagger:dagger-android-support:$versions.dagger"
-dagger.processor = "com.google.dagger:dagger-android-processor:$versions.dagger"
-deps.dagger = dagger
+
+def lifecycle = [:]
+lifecycle.runtime = "androidx.lifecycle:lifecycle-runtime:$versions.lifecycle"
+lifecycle.extensions = "androidx.lifecycle:lifecycle-extensions:$versions.lifecycle"
+lifecycle.java8 = "androidx.lifecycle:lifecycle-common-java8:$versions.lifecycle"
+lifecycle.compiler = "androidx.lifecycle:lifecycle-compiler:$versions.lifecycle"
+deps.lifecycle = lifecycle
 
 def room = [:]
 room.runtime = "androidx.room:room-runtime:$versions.room"
@@ -50,10 +51,18 @@ room.ktx = "androidx.room:room-ktx:$versions.room"
 room.testing = "androidx.room:room-testing:$versions.room"
 deps.room = room
 
+def dagger = [:]
+dagger.dagger = "com.google.dagger:dagger:$versions.dagger"
+dagger.compiler = "com.google.dagger:dagger-compiler:$versions.dagger"
+dagger.android = "com.google.dagger:dagger-android:$versions.dagger"
+dagger.androidsupport = "com.google.dagger:dagger-android-support:$versions.dagger"
+dagger.processor = "com.google.dagger:dagger-android-processor:$versions.dagger"
+deps.dagger = dagger
 
 def test = [:]
 test.junit = "junit:junit:$versions.junit"
 test.runner = "androidx.test:runner:$versions.test_runner"
+test.lifecycle = "androidx.arch.core:core-testing:$versions.lifecycle"
 deps.test = test
 
 
