@@ -4,6 +4,8 @@ buildscript {
     dependencies {
         classpath langs.android_gradle_plugin
         classpath langs.kotlin
+        classpath langs.kotlin_allopen
+        classpath deps.navigation.safe_args_plugin
     }
 }
 

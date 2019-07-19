@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: "androidx.navigation.safeargs.kotlin"
 
 android {
     compileSdkVersion build_versions.target_sdk
@@ -37,6 +38,17 @@ dependencies {
     implementation deps.lifecycle.extensions
     implementation deps.lifecycle.java8
 
+    // Room
+    kapt deps.room.compiler
+    implementation deps.room.runtime
+    implementation deps.room.ktx
+    implementation deps.room.testing
+
+    //Navigation
+    implementation deps.navigation.runtime_ktx
+    implementation deps.navigation.fragment_ktx
+    implementation deps.navigation.ui_ktx
+
     // Dagger 2
     implementation deps.dagger.dagger
     annotationProcessor deps.dagger.compiler
@@ -46,14 +58,11 @@ dependencies {
     kapt deps.dagger.compiler
     kapt deps.dagger.processor
 
-    // Room
-    kapt deps.room.compiler
-    implementation deps.room.runtime
-    implementation deps.room.ktx
-    implementation deps.room.testing
 
     // Test
     testImplementation deps.test.junit
     androidTestImplementation deps.test.runner
     testImplementation deps.test.lifecycle
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.0.0'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.0.0'
 }
