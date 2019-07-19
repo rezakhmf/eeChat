@@ -1,4 +1,4 @@
-package com.farahaniconsulting.eechat.view
+package com.farahaniconsulting.eechat
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

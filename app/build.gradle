@@ -40,6 +40,12 @@ dependencies {
     kapt deps.dagger.compiler
     kapt deps.dagger.processor
 
+    // Room
+    kapt deps.room.compiler
+    implementation deps.room.runtime
+    implementation deps.room.ktx
+    implementation deps.room.testing
+
     // Test
     testImplementation deps.test.junit
     androidTestImplementation deps.test.runner

@@ -1,7 +1,6 @@
 package com.farahaniconsulting.eechat.di
 
-import com.farahaniconsulting.eechat.view.MainActivity
-import dagger.Component
+import com.farahaniconsulting.eechat.MainActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
