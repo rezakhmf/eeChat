@@ -11,7 +11,7 @@
 
 
         <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/inbox_list"
+                android:id="@+id/inboxListRV"
                 tools:listitem="@layout/inbox_item"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
@@ -22,6 +22,15 @@
                 app:layout_constraintTop_toTopOf="parent"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"/>
+
+        <ImageView
+                android:id="@+id/emptyView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@mipmap/loading"
+                android:visibility="visible"
+                android:scaleType="center"
+                android:contentDescription="@string/empty"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

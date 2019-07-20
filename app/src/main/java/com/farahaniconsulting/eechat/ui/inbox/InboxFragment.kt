@@ -1,103 +1,77 @@
-package com.farahaniconsulting.eeChat
+package com.farahaniconsulting.eechat.ui.inbox
 
-import android.content.Context
-import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.farahaniconsulting.eechat.R
+import com.farahaniconsulting.eechat.presenter.inbox.InboxPresenter
+import com.farahaniconsulting.eechat.ui.common.BaseFragment
+import com.farahaniconsulting.eechat.ui.common.extensions.invisible
+import com.farahaniconsulting.eechat.ui.common.extensions.visible
+import com.farahaniconsulting.eechat.vo.Inbox
+import kotlinx.android.synthetic.main.fragment_inbox.*
+import kotlinx.android.synthetic.main.fragment_inbox.view.*
+import javax.inject.Inject
+
+class InboxFragment @Inject constructor() : BaseFragment(), InboxProviderView {
+
+    @Inject
+    lateinit var inboxPresenter: InboxPresenter
+    @Inject
+    lateinit var inboxRVAdapter: InboxRVAdapter
 
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+    override fun layoutId() = R.layout.fragment_inbox
 
-/**
- * A simple [Fragment] subclass.
- * Activities that contain this fragment must implement the
- * [InboxFragment.OnFragmentInteractionListener] interface
- * to handle interaction events.
- * Use the [InboxFragment.newInstance] factory method to
- * create an instance of this fragment.
- *
- */
-class InboxFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-    private var listener: OnFragmentInteractionListener? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+        inboxPresenter?.setView(this)
+    }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        val view = inflater.inflate(layoutId(), container, false)
+
+        with(view.inboxListRV) {
+            setHasFixedSize(true)
+            val manager = LinearLayoutManager(context)
+            layoutManager = manager
         }
+
+        return view
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_inbox, container, false)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initializeView()
+        //showProgress()
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    fun onButtonPressed(uri: Uri) {
-        listener?.onFragmentInteraction(uri)
+    private fun initializeView() {
+        emptyView.visible()
+        inboxPresenter.getInbox()
+        inboxListRV.visible()
     }
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        if (context is OnFragmentInteractionListener) {
-            listener = context
-        } else {
-            throw RuntimeException(context.toString() + " must implement OnFragmentInteractionListener")
-        }
+
+    override fun showInboxList(inbox: MutableList<Inbox>) {
+
+        inboxRVAdapter?.reloadInbox(inbox)
+
+        inboxListRV.recycledViewPool.setMaxRecycledViews(0,20)
+        inboxListRV.adapter = inboxRVAdapter
+        inboxRVAdapter?.notifyDataSetChanged()
+        emptyView.invisible()
     }
 
-    override fun onDetach() {
-        super.onDetach()
-        listener = null
+    override fun loadingStarted() {
+        notify("loading...")
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     *
-     *
-     * See the Android Training lesson [Communicating with Other Fragments]
-     * (http://developer.android.com/training/basics/fragments/communicating.html)
-     * for more information.
-     */
-    interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        fun onFragmentInteraction(uri: Uri)
+    override fun loadingFailed(errorMessage: String?) {
+        notify(errorMessage.toString())
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment InboxFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            InboxFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
 }
