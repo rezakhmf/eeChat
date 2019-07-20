@@ -30,7 +30,7 @@ ext.build_versions = build_versions
 def support = [:]
 
 support.appcompat = "androidx.appcompat:appcompat:$versions.support"
-support.support = "androidx.legacy:legacy-support-v4:$versions.support"
+support.v4 = "androidx.legacy:legacy-support-v4:$versions.support"
 support.annotatoin = "androidx.annotation:annotation:$versions.support"
 support.design = "com.google.android.material:material:$versions.support"
 support.cardview = "androidx.cardview:cardview:$versions.support"

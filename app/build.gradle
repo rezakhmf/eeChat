@@ -27,7 +27,7 @@ dependencies {
     implementation langs.kotlin_stdlib
     // Android
     implementation deps.support.appcompat
-    implementation deps.support.support
+    implementation deps.support.v4
     implementation deps.support.annotatoin
     implementation deps.support.design
     implementation deps.support.constraintlayout
