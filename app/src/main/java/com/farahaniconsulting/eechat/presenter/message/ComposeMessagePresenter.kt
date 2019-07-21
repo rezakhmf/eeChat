@@ -5,7 +5,6 @@ import com.farahaniconsulting.eechat.db.EEChatDb
 import com.farahaniconsulting.eechat.db.MessageDao
 import com.farahaniconsulting.eechat.ui.common.extensions.currentTimeUTC
 import com.farahaniconsulting.eechat.ui.message.ComposeMessageProviderView
-import com.farahaniconsulting.eechat.vo.Inbox
 import com.farahaniconsulting.eechat.vo.Message
 import java.util.*
 import javax.inject.Inject

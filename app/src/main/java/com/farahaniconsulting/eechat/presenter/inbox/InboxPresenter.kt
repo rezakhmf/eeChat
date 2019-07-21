@@ -38,14 +38,6 @@ class InboxPresenter @Inject constructor() : InboxPresenterProvider {
         inboxProviderView = null
     }
 
-    private fun onFlightPricesFetchError(throwable: Throwable) {
-        if (isViewAttached()) {
-            inboxProviderView?.loadingFailed(throwable.message)
-        } else {
-            // do nothing
-        }
-    }
-
     private fun isViewAttached(): Boolean {
         return inboxProviderView != null
     }

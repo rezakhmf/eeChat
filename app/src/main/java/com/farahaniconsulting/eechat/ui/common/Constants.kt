@@ -1,3 +1,3 @@
 package com.reza.skyscannertest.ui.main
 
-const val TIMEOUT_IN_MS: Long = 30000
+const val TIMEOUT_IN_MS: Long = 40000
