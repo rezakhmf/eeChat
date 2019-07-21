@@ -75,11 +75,12 @@ class ComposeMessageFragment @Inject constructor() : BaseFragment(), ComposeMess
 
         GlobalScope.launch (Dispatchers.Main) {
             composeMessageRVAdapter.reloadMessage(messages)
-
+            
             messageListRV.recycledViewPool.setMaxRecycledViews(0,20)
             messageListRV.adapter = composeMessageRVAdapter
-
+            messageListRV.scrollToPosition(messages.size - 1)
             composeMessageRVAdapter.notifyDataSetChanged()
+
         }
     }
 
