@@ -24,7 +24,7 @@
 
         <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/messageListRV"
-                tools:listitem="@layout/compose_message_item"
+                tools:listitem="@layout/compose_message_sender_item"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layoutManager="LinearLayoutManager"

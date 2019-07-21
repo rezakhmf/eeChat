@@ -8,8 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.farahaniconsulting.eechat.R
 import com.farahaniconsulting.eechat.ui.inbox.ListItem
 import com.farahaniconsulting.eechat.vo.Message
-import kotlinx.android.synthetic.main.compose_message_item.view.*
-import kotlinx.android.synthetic.main.inbox_item.view.*
+import kotlinx.android.synthetic.main.compose_message_sender_item.view.*
 import kotlinx.android.synthetic.main.inbox_item.view.textMessageDate
 import java.util.*
 import javax.inject.Inject
@@ -25,8 +24,12 @@ class ComposeMessageRVAdapter @Inject constructor() : RecyclerView.Adapter<Recyc
         val layoutInflater = LayoutInflater.from(context)
 
         when (viewType) {
-            ListItem.TYPE_MESSAGE_INFO -> {
-                val messageItemView = layoutInflater.inflate(R.layout.compose_message_item, parent, false)
+            ListItem.TYPE_MESSAGE_SENDER_INFO -> {
+                val messageItemView = layoutInflater.inflate(R.layout.compose_message_sender_item, parent, false)
+                return MessageItemViewHolder(messageItemView)
+            }
+            ListItem.TYPE_MESSAGE_RECEIVER_INFO -> {
+                val messageItemView = layoutInflater.inflate(R.layout.compose_message_reciever_item, parent, false)
                 return MessageItemViewHolder(messageItemView)
             }
             else -> throw IllegalStateException("unsupported view type")
@@ -38,16 +41,25 @@ class ComposeMessageRVAdapter @Inject constructor() : RecyclerView.Adapter<Recyc
     }
 
     override fun getItemViewType(position: Int): Int {
-        return ListItem.TYPE_MESSAGE_INFO
+        if ((position+1) % 2 != 0) {
+            return ListItem.TYPE_MESSAGE_SENDER_INFO
+        } else {
+            return ListItem.TYPE_MESSAGE_RECEIVER_INFO
+        }
+
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
 
-        val messageInfo = messageList.get(position)
+        val messageInfo = messageList[position]
         val viewType = getItemViewType(position)
 
         when (viewType) {
-            ListItem.TYPE_MESSAGE_INFO -> {
+            ListItem.TYPE_MESSAGE_SENDER_INFO -> {
+                holder.itemView.textMessage.text = messageInfo.content
+                holder.itemView.textMessageDate.text = messageInfo.date
+            }
+            ListItem.TYPE_MESSAGE_RECEIVER_INFO -> {
                 holder.itemView.textMessage.text = messageInfo.content
                 holder.itemView.textMessageDate.text = messageInfo.date
             }
