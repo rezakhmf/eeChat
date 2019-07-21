@@ -47,7 +47,7 @@ class InboxRVAdapter @Inject constructor() : RecyclerView.Adapter<RecyclerView.V
             ListItem.TYPE_INBOX_INFO -> {
                 holder.itemView.personName.text = inboxInfo.personName
                 holder.itemView.lastMessage.text = inboxInfo.lastMessageContent
-                holder.itemView.lastMessageDate.text = inboxInfo.lastMessageDate
+                holder.itemView.textMessageDate.text = inboxInfo.lastMessageDate
             }
         }
     }
@@ -60,7 +60,7 @@ class InboxRVAdapter @Inject constructor() : RecyclerView.Adapter<RecyclerView.V
     class InboxItemViewHolder internal constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val personName = itemView.personName
         val lastMessage = itemView.lastMessage
-        val lastMessageDate = itemView.lastMessageDate
+        val lastMessageDate = itemView.textMessageDate
     }
 
 }

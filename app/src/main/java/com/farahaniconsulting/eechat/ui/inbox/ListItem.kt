@@ -6,5 +6,6 @@ abstract class ListItem {
 
     companion object {
         val TYPE_INBOX_INFO = 0
+        val TYPE_MESSAGE_INFO = 0
     }
 }

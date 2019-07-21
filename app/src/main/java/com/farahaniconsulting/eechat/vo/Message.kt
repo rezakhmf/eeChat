@@ -6,19 +6,12 @@ import java.util.*
 @Entity(tableName = "message",
     indices = arrayOf(
         Index(value = arrayOf("id"), unique = true),
-        Index(value = arrayOf("inbox_id"), unique = false)),
-    foreignKeys = arrayOf(
-        ForeignKey(
-        entity = Inbox::class,
-        parentColumns = arrayOf("id"),
-        childColumns = arrayOf("inbox_id")
+        Index(value = arrayOf("inbox_id"), unique = false))
         )
-    )
-)
 data class Message(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
-    val id: Long,
+    val id: Long = 0,
     @ColumnInfo(name = "inbox_id")
     val inboxId: Long,
     @ColumnInfo(name = "content")

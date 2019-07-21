@@ -11,8 +11,8 @@ import com.farahaniconsulting.eechat.vo.Message
 @Dao
 interface MessageDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(message: Message)
+    suspend fun insert(message: Message)
 
-    @Query("SELECT * FROM message WHERE id = :inboxId")
-    fun findByInbox(inboxId: Long): List<Message>
+    @Query("SELECT * FROM message WHERE inbox_id = :inboxId")
+    suspend fun findMessageByInbox(inboxId: Long): List<Message>
 }

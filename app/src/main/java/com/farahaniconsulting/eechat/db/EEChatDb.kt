@@ -11,7 +11,7 @@ import com.farahaniconsulting.eechat.vo.Message
     entities = [
         Inbox::class,
         Message::class],
-    version = 0,
+    version = 2,
     exportSchema = false)
 abstract class EEChatDb: RoomDatabase() {
 

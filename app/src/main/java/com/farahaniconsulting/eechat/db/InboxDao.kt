@@ -10,8 +10,8 @@ import com.farahaniconsulting.eechat.vo.Inbox
 @Dao
 interface InboxDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(inbox: Inbox)
+    suspend fun insert(inbox: Inbox)
 
     @Query("SELECT * FROM inbox")
-    fun getAllInbox(): List<Inbox>
+    suspend fun getAllInbox(): List<Inbox>
 }

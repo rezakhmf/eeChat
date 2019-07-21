@@ -9,7 +9,7 @@ import androidx.room.PrimaryKey
 data class Inbox(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
-    val inboxId: Long,
+    val inboxId: Long = 0,
     @ColumnInfo(name = "person_image_url")
     val personImageUrl: String?,
     @ColumnInfo(name = "person_name")

@@ -8,11 +8,18 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.farahaniconsulting.eechat.R
 import com.farahaniconsulting.eechat.presenter.inbox.InboxPresenter
 import com.farahaniconsulting.eechat.ui.common.BaseFragment
+import com.farahaniconsulting.eechat.ui.common.extensions.currentTimeUTC
 import com.farahaniconsulting.eechat.ui.common.extensions.invisible
+import com.farahaniconsulting.eechat.ui.common.extensions.replaceFragment
 import com.farahaniconsulting.eechat.ui.common.extensions.visible
+import com.farahaniconsulting.eechat.ui.message.ComposeMessageFragment
 import com.farahaniconsulting.eechat.vo.Inbox
 import kotlinx.android.synthetic.main.inbox_fragment.*
 import kotlinx.android.synthetic.main.inbox_fragment.view.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import java.util.*
 import javax.inject.Inject
 
 class InboxFragment @Inject constructor() : BaseFragment(), InboxProviderView {
@@ -21,6 +28,8 @@ class InboxFragment @Inject constructor() : BaseFragment(), InboxProviderView {
     lateinit var inboxPresenter: InboxPresenter
     @Inject
     lateinit var inboxRVAdapter: InboxRVAdapter
+    @Inject
+    lateinit var composeMessageFragment: ComposeMessageFragment
 
 
     override fun layoutId() = R.layout.inbox_fragment
@@ -46,24 +55,50 @@ class InboxFragment @Inject constructor() : BaseFragment(), InboxProviderView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initializeView()
-        //showProgress()
     }
 
     private fun initializeView() {
+
+        GlobalScope.launch {
+            inboxPresenter.getInbox()
+        }
         emptyView.visible()
-        inboxPresenter.getInbox()
-        inboxListRV.visible()
+        inboxListRV.invisible()
+        composeMessageBtn.setOnClickListener { view ->
+
+            GlobalScope.launch {
+                val inbox = Inbox(
+                    personImageUrl = "",
+                    personName = "user: " + (0..Int.MAX_VALUE).random().toString(),
+                    lastMessageContent = "",
+                        lastMessageDate = Date().currentTimeUTC()
+                )
+                inboxPresenter.insertInbox(inbox)
+            }
+        }
     }
 
+    override fun showMessageComposer() {
+        val inboxArgs = Bundle()
+        inboxArgs.putLong("inboxId", 0L)
+        composeMessageFragment.arguments = inboxArgs
+        getBaseActivity()?.replaceFragment(composeMessageFragment, R.id.mainContainer)
+    }
 
     override fun showInboxList(inbox: List<Inbox>) {
 
-        inboxRVAdapter.reloadInbox(inbox)
+        if (inbox.isEmpty()) return
 
-        inboxListRV.recycledViewPool.setMaxRecycledViews(0,20)
-        inboxListRV.adapter = inboxRVAdapter
-        inboxRVAdapter.notifyDataSetChanged()
-        emptyView.invisible()
+        GlobalScope.launch (Dispatchers.Main) {
+
+            inboxRVAdapter.reloadInbox(inbox)
+
+            inboxListRV.recycledViewPool.setMaxRecycledViews(0, 20)
+            inboxListRV.adapter = inboxRVAdapter
+            inboxRVAdapter.notifyDataSetChanged()
+            emptyView.invisible()
+            inboxListRV.visible()
+        }
     }
 
     override fun loadingStarted() {

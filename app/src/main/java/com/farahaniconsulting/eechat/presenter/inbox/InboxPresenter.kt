@@ -1,12 +1,13 @@
 package com.farahaniconsulting.eechat.presenter.inbox
 
+import androidx.room.withTransaction
 import com.farahaniconsulting.eechat.db.EEChatDb
 import com.farahaniconsulting.eechat.db.InboxDao
 import com.farahaniconsulting.eechat.ui.inbox.InboxProviderView
 import com.farahaniconsulting.eechat.vo.Inbox
 import javax.inject.Inject
 
-class InboxPresenter @Inject constructor() : InboxPresenterProivder {
+class InboxPresenter @Inject constructor() : InboxPresenterProvider {
 
     // Dependencies
     @Inject
@@ -15,9 +16,15 @@ class InboxPresenter @Inject constructor() : InboxPresenterProivder {
     lateinit var inboxDao: InboxDao
     private var inboxProviderView: InboxProviderView? = null
 
+    override suspend fun insertInbox(inbox: Inbox) {
+        db.withTransaction {
+            inboxDao.insert(inbox)
+            inboxProviderView?.showMessageComposer()
+        }
+    }
 
-    override fun getInbox() {
-        db.runInTransaction {
+    override suspend fun getInbox() {
+        db.withTransaction {
             val inboxList = inboxDao.getAllInbox()
             inboxProviderView?.showInboxList(inboxList)
         }

@@ -1,7 +1,7 @@
 package com.farahaniconsulting.eechat.di
 
 import com.farahaniconsulting.eechat.presenter.inbox.InboxPresenter
-import com.farahaniconsulting.eechat.presenter.inbox.InboxPresenterProivder
+import com.farahaniconsulting.eechat.presenter.inbox.InboxPresenterProvider
 import com.farahaniconsulting.eechat.ui.inbox.InboxFragment
 import com.farahaniconsulting.eechat.ui.inbox.InboxProviderView
 import com.farahaniconsulting.eechat.ui.inbox.InboxRVAdapter
@@ -12,7 +12,7 @@ import dagger.Provides
 class InboxFragmentModule {
 
     @Provides
-    fun provideInboxPresenter() : InboxPresenterProivder {
+    fun provideInboxPresenter() : InboxPresenterProvider {
         return InboxPresenter()
     }
 
