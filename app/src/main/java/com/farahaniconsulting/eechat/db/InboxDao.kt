@@ -13,5 +13,5 @@ interface InboxDao {
     fun insert(inbox: Inbox)
 
     @Query("SELECT * FROM inbox")
-    fun getAllInbox(): LiveData<Array<Inbox>>
+    fun getAllInbox(): List<Inbox>
 }

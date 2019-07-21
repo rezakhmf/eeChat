@@ -22,7 +22,7 @@ class InboxFragmentModule {
     }
 
     @Provides
-    fun provideInboxPorviderView(inboxFragment: InboxFragment) : InboxProviderView {
+    fun provideInboxProviderView(inboxFragment: InboxFragment) : InboxProviderView {
         return inboxFragment
     }
 

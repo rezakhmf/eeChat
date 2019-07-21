@@ -4,7 +4,7 @@ import com.farahaniconsulting.eechat.vo.Inbox
 
 
 interface InboxProviderView {
-    fun showInboxList(inbox: MutableList<Inbox>)
+    fun showInboxList(inbox: List<Inbox>)
     fun loadingStarted()
     fun loadingFailed(errorMessage: String?)
 }

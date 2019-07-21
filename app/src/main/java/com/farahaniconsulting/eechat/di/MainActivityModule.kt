@@ -8,7 +8,7 @@ import dagger.Provides
 class MainActivityModule {
 
     @Provides
-    fun bindMainActivity(mainActivity: MainActivity): MainActivity {
+    fun bindMainActivity(): MainActivity {
         return MainActivity()
     }
 

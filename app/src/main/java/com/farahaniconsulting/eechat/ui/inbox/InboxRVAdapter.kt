@@ -18,7 +18,7 @@ class InboxRVAdapter @Inject constructor() : RecyclerView.Adapter<RecyclerView.V
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
 
-        context = parent?.context
+        context = parent.context
         val layoutInflater = LayoutInflater.from(context)
 
         when (viewType) {
@@ -52,7 +52,7 @@ class InboxRVAdapter @Inject constructor() : RecyclerView.Adapter<RecyclerView.V
         }
     }
 
-    fun reloadInbox(inboxList: MutableList<Inbox>) {
+    fun reloadInbox(inboxList: List<Inbox>) {
         this.inboxList.clear()
         this.inboxList = inboxList
     }

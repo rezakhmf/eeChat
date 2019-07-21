@@ -11,8 +11,8 @@ import com.farahaniconsulting.eechat.ui.common.BaseFragment
 import com.farahaniconsulting.eechat.ui.common.extensions.invisible
 import com.farahaniconsulting.eechat.ui.common.extensions.visible
 import com.farahaniconsulting.eechat.vo.Inbox
-import kotlinx.android.synthetic.main.fragment_inbox.*
-import kotlinx.android.synthetic.main.fragment_inbox.view.*
+import kotlinx.android.synthetic.main.inbox_fragment.*
+import kotlinx.android.synthetic.main.inbox_fragment.view.*
 import javax.inject.Inject
 
 class InboxFragment @Inject constructor() : BaseFragment(), InboxProviderView {
@@ -23,12 +23,12 @@ class InboxFragment @Inject constructor() : BaseFragment(), InboxProviderView {
     lateinit var inboxRVAdapter: InboxRVAdapter
 
 
-    override fun layoutId() = R.layout.fragment_inbox
+    override fun layoutId() = R.layout.inbox_fragment
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        inboxPresenter?.setView(this)
+        inboxPresenter.setView(this)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -56,13 +56,13 @@ class InboxFragment @Inject constructor() : BaseFragment(), InboxProviderView {
     }
 
 
-    override fun showInboxList(inbox: MutableList<Inbox>) {
+    override fun showInboxList(inbox: List<Inbox>) {
 
-        inboxRVAdapter?.reloadInbox(inbox)
+        inboxRVAdapter.reloadInbox(inbox)
 
         inboxListRV.recycledViewPool.setMaxRecycledViews(0,20)
         inboxListRV.adapter = inboxRVAdapter
-        inboxRVAdapter?.notifyDataSetChanged()
+        inboxRVAdapter.notifyDataSetChanged()
         emptyView.invisible()
     }
 

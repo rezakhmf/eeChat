@@ -23,6 +23,17 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"/>
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/composeMessage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@mipmap/message"
+                android:tint="@color/colorTextWhiteTint"
+                android:layout_margin="@dimen/layout_margin"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:foregroundGravity="bottom|right"/>
+
         <ImageView
                 android:id="@+id/emptyView"
                 android:layout_width="match_parent"

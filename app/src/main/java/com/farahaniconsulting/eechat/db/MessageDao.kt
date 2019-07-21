@@ -14,5 +14,5 @@ interface MessageDao {
     fun insert(message: Message)
 
     @Query("SELECT * FROM message WHERE id = :inboxId")
-    fun findByInbox(inboxId: Long): LiveData<Array<Message>>
+    fun findByInbox(inboxId: Long): List<Message>
 }
