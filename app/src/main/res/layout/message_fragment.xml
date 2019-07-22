@@ -34,17 +34,36 @@
                 app:layout_constraintTop_toTopOf="@id/topGuidLine"
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_marginTop="@dimen/default_margin"
-                android:layout_marginBottom="80dp"/>
+                android:layout_marginBottom="168dp"/>
+
+
+    <EditText
+            android:id="@+id/personPhoneNumber"
+            android:text=""
+            tools:text="person phone number"
+            android:hint="type person phone number here"
+            android:layout_height="48dp"
+            android:layout_width="match_parent"
+            android:background="@color/colorTextLastMessage"
+            android:textColor="@color/colorTextPrimary"
+            android:textStyle="bold"
+            android:inputType="phone"
+            app:layout_constraintLeft_toLeftOf="@id/leftGuidLine"
+            app:layout_constraintTop_toBottomOf="@id/messageListRV"
+            android:layout_marginStart="@dimen/default_margin"
+            android:layout_marginBottom="@dimen/default_margin"/>
 
         <EditText
                 android:id="@+id/userMessage"
                 android:text=""
                 tools:text="user message"
+                android:hint="type your message here"
                 android:layout_height="48dp"
                 android:layout_width="match_parent"
                 android:background="@color/colorTextLastMessage"
                 android:textColor="@color/colorTextPrimary"
                 android:textStyle="bold"
+                android:inputType="text"
                 app:layout_constraintLeft_toLeftOf="@id/leftGuidLine"
                 app:layout_constraintTop_toBottomOf="@id/messageListRV"
                 app:layout_constraintBottom_toBottomOf="parent"

@@ -9,6 +9,7 @@ import com.farahaniconsulting.eechat.R
 import com.farahaniconsulting.eechat.presenter.message.ComposeMessagePresenter
 import com.farahaniconsulting.eechat.ui.common.BaseFragment
 import com.farahaniconsulting.eechat.ui.common.extensions.currentTimeUTC
+import com.farahaniconsulting.eechat.ui.common.extensions.invisible
 import com.farahaniconsulting.eechat.ui.common.extensions.visible
 import com.farahaniconsulting.eechat.vo.Message
 import kotlinx.android.synthetic.main.message_fragment.*
@@ -75,6 +76,8 @@ class ComposeMessageFragment @Inject constructor() : BaseFragment(), ComposeMess
 
         GlobalScope.launch (Dispatchers.Main) {
             composeMessageRVAdapter.reloadMessage(messages)
+
+            personPhoneNumber.invisible()
 
             messageListRV.recycledViewPool.setMaxRecycledViews(0,20)
             messageListRV.adapter = composeMessageRVAdapter
