@@ -6,11 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.farahaniconsulting.eechat.R
-import com.farahaniconsulting.eechat.ui.inbox.ListItem
 import com.farahaniconsulting.eechat.vo.Message
 import kotlinx.android.synthetic.main.compose_message_sender_item.view.*
-import kotlinx.android.synthetic.main.inbox_item.view.textMessageDate
-import java.util.*
 import javax.inject.Inject
 import kotlin.properties.Delegates
 
@@ -78,8 +75,8 @@ class ComposeMessageRVAdapter @Inject constructor() : RecyclerView.Adapter<Recyc
     }
 
     class MessageItemViewHolder internal constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val personName = itemView.textMessage
-        val lastMessage = itemView.textMessageDate
+        val textMessage = itemView.textMessage
+        val textMessageDate = itemView.textMessageDate
     }
 
 }

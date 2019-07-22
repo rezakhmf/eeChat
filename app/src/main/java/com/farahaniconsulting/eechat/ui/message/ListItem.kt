@@ -1,4 +1,4 @@
-package com.farahaniconsulting.eechat.ui.inbox
+package com.farahaniconsulting.eechat.ui.message
 
 abstract class ListItem {
 

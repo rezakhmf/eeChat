@@ -34,8 +34,7 @@
                 app:layout_constraintTop_toTopOf="@id/topGuidLine"
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_marginTop="@dimen/default_margin"
-                android:layout_marginBottom="168dp"/>
-
+                android:layout_marginBottom="120dp"/>
 
     <EditText
             android:id="@+id/personPhoneNumber"
@@ -50,8 +49,9 @@
             android:inputType="phone"
             app:layout_constraintLeft_toLeftOf="@id/leftGuidLine"
             app:layout_constraintTop_toBottomOf="@id/messageListRV"
+            app:layout_constraintRight_toRightOf="@id/userMessage"
             android:layout_marginStart="@dimen/default_margin"
-            android:layout_marginBottom="@dimen/default_margin"/>
+            android:layout_marginEnd="64dp"/>
 
         <EditText
                 android:id="@+id/userMessage"
@@ -65,7 +65,7 @@
                 android:textStyle="bold"
                 android:inputType="text"
                 app:layout_constraintLeft_toLeftOf="@id/leftGuidLine"
-                app:layout_constraintTop_toBottomOf="@id/messageListRV"
+                app:layout_constraintTop_toBottomOf="@id/personPhoneNumber"
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_marginStart="@dimen/default_margin"
                 android:layout_marginTop="@dimen/default_margin"

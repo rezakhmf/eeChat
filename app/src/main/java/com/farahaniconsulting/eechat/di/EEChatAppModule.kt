@@ -5,7 +5,6 @@ import android.content.Context
 import androidx.room.Room
 import com.farahaniconsulting.eechat.EEChatApp
 import com.farahaniconsulting.eechat.db.EEChatDb
-import com.farahaniconsulting.eechat.db.InboxDao
 import com.farahaniconsulting.eechat.db.MessageDao
 import dagger.Module
 import dagger.Provides
@@ -33,12 +32,6 @@ class EEChatAppModule {
             .databaseBuilder(app, EEChatDb::class.java, "eechat.db")
             .fallbackToDestructiveMigration()
             .build()
-    }
-
-    @Provides
-    @Singleton
-    fun provideInboxDao(db: EEChatDb): InboxDao {
-        return db.inboxDao()
     }
 
     @Provides

@@ -28,7 +28,6 @@ class ComposeMessagePresenter @Inject constructor() : ComposeMessagePresenterPro
                 isRead = true,
                 amISender = false)
             messageDao.insert(responseMsg)
-            responseMsg
             val messages = messageDao.findMessageByInbox(inboxId = 0)
             composeMessageProviderView?.showMessageList(messages)
         }

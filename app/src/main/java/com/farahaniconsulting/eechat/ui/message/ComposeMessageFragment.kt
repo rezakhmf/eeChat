@@ -53,13 +53,9 @@ class ComposeMessageFragment @Inject constructor() : BaseFragment(), ComposeMess
         super.onViewCreated(view, savedInstanceState)
         initializeView()
         sendMessage.setOnClickListener { view ->
-            val inboxId = arguments?.getLong("inboxId", 0L)
-
-            inboxId?.let {
-                val msg = Message(inboxId = it, content = userMessage.text.toString(), amISender = true, isRead = false, date = Date().currentTimeUTC())
-                GlobalScope.launch {
-                    composeMessagePresenter.sendMessage(msg)
-                }
+            val msg = Message(inboxId = 0, content = userMessage.text.toString(), amISender = true, isRead = false, date = Date().currentTimeUTC())
+            GlobalScope.launch {
+                composeMessagePresenter.sendMessage(msg)
             }
         }
     }
@@ -77,7 +73,7 @@ class ComposeMessageFragment @Inject constructor() : BaseFragment(), ComposeMess
         GlobalScope.launch (Dispatchers.Main) {
             composeMessageRVAdapter.reloadMessage(messages)
 
-            personPhoneNumber.invisible()
+            if(messages.isNotEmpty()) personPhoneNumber.invisible()
 
             messageListRV.recycledViewPool.setMaxRecycledViews(0,20)
             messageListRV.adapter = composeMessageRVAdapter
