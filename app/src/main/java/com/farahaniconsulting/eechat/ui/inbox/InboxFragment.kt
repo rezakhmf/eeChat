@@ -45,8 +45,8 @@ class InboxFragment @Inject constructor() : BaseFragment(), InboxProviderView {
 
         with(view.inboxListRV) {
             setHasFixedSize(true)
-            val manager = LinearLayoutManager(context)
-            layoutManager = manager
+            val linearLayoutManager = LinearLayoutManager(context)
+            layoutManager = linearLayoutManager
         }
 
         return view

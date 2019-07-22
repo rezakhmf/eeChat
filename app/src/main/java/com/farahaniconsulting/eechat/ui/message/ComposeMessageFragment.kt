@@ -41,8 +41,8 @@ class ComposeMessageFragment @Inject constructor() : BaseFragment(), ComposeMess
 
         with(view.messageListRV) {
             setHasFixedSize(true)
-            val manager = LinearLayoutManager(context)
-            layoutManager = manager
+            val linearLayoutManager = LinearLayoutManager(context)
+            layoutManager = linearLayoutManager
         }
 
         return view
