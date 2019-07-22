@@ -79,8 +79,6 @@ class ComposeMessageFragment @Inject constructor() : BaseFragment(), ComposeMess
             messageListRV.recycledViewPool.setMaxRecycledViews(0,20)
             messageListRV.adapter = composeMessageRVAdapter
             messageListRV.scrollToPosition(messages.size - 1)
-            composeMessageRVAdapter.notifyDataSetChanged()
-
         }
     }
 

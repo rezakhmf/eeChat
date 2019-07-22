@@ -12,11 +12,17 @@ import kotlinx.android.synthetic.main.compose_message_sender_item.view.*
 import kotlinx.android.synthetic.main.inbox_item.view.textMessageDate
 import java.util.*
 import javax.inject.Inject
+import kotlin.properties.Delegates
 
-class ComposeMessageRVAdapter @Inject constructor() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+
+class ComposeMessageRVAdapter @Inject constructor() : RecyclerView.Adapter<RecyclerView.ViewHolder>(), AutoUpdatableAdapter {
 
     private var context: Context? = null
-    private var messageList = Collections.emptyList<Message>()
+
+    var messageList: List<Message> by Delegates.observable(emptyList()) {
+            prop, old, new ->
+        autoNotify(old, new) { o, n -> o.id == n.id }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
 
@@ -67,8 +73,8 @@ class ComposeMessageRVAdapter @Inject constructor() : RecyclerView.Adapter<Recyc
     }
 
     fun reloadMessage(messageList: List<Message>) {
-        this.messageList.clear()
         this.messageList = messageList
+
     }
 
     class MessageItemViewHolder internal constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
