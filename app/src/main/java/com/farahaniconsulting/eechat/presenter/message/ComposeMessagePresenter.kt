@@ -6,6 +6,10 @@ import com.farahaniconsulting.eechat.db.MessageDao
 import com.farahaniconsulting.eechat.ui.common.extensions.currentTimeUTC
 import com.farahaniconsulting.eechat.ui.message.ComposeMessageProviderView
 import com.farahaniconsulting.eechat.vo.Message
+import com.reza.skyscannertest.ui.main.TIMEOUT_IN_MS
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import java.util.*
 import javax.inject.Inject
 
@@ -30,6 +34,10 @@ class ComposeMessagePresenter @Inject constructor() : ComposeMessagePresenterPro
             messageDao.insert(responseMsg)
             val messages = messageDao.findMessageByInbox(inboxId = 0)
             composeMessageProviderView?.showMessageList(messages)
+            GlobalScope.launch {
+                delay(TIMEOUT_IN_MS)
+                userIdleNotifier()
+            }
         }
     }
 
@@ -59,6 +67,10 @@ class ComposeMessagePresenter @Inject constructor() : ComposeMessagePresenterPro
 
     private fun isViewAttached(): Boolean {
         return composeMessageProviderView != null
+    }
+
+    private fun userIdleNotifier() {
+        composeMessageProviderView?.showNotificationIdleUser()
     }
 
 }

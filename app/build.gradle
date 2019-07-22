@@ -57,7 +57,8 @@ dependencies {
     // Test
     testImplementation deps.test.junit
     androidTestImplementation deps.test.runner
+    androidTestImplementation deps.test.rules
     testImplementation deps.test.lifecycle
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.0.0'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.0.0'
+    testImplementation deps.hamcrest.core
+    testImplementation deps.mockito.core
 }

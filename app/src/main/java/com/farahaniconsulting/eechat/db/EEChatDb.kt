@@ -13,5 +13,5 @@ import com.farahaniconsulting.eechat.vo.Message
     exportSchema = false)
 abstract class EEChatDb: RoomDatabase() {
 
-    abstract fun messDao(): MessageDao
+    abstract fun messageDao(): MessageDao
 }

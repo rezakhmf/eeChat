@@ -81,6 +81,15 @@ class ComposeMessageFragment @Inject constructor() : BaseFragment(), ComposeMess
         }
     }
 
+    override fun showNotificationIdleUser() {
+        GlobalScope.launch (Dispatchers.Main) {
+            notify(
+                "if you won’t response back to a message in\n" +
+                        "a given time so that you would  miss on the communication"
+            )
+        }
+    }
+
     override fun loadingStarted() {
         notify("loading...")
     }

@@ -37,6 +37,6 @@ class EEChatAppModule {
     @Provides
     @Singleton
     fun provideMessageDao(db: EEChatDb): MessageDao {
-        return db.messDao()
+        return db.messageDao()
     }
 }
