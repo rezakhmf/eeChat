@@ -1,6 +1,23 @@
 # eeChat
 
-The eeChat is a chat application with a local database
+The eeChat is a chat application with a local databas
+
+
+### Installing
+
+This project is done in Kotlin and need to run via Android Studio
+
+
+
+## Tech Stach
+* MVP - Model View Presenter design pattern
+* [Kotlin](https://kotlinlang.org/) - Language
+* [Dagger2](https://maven.apache.org/) - Dependency Management
+* [Coroutines] (https://kotlinlang.org/docs/reference/coroutines-overview.html) - Asynchronous or non-blocking
+* [ConstraintLayout](https://developer.android.com/training/constraint-layout/index.html) - Responsive UI layout manager
+* [Room](https://developer.android.com/jetpack/androidx/releases/room) - Persistence library provides an abstraction layer over SQLiteT
+* Unit tested
+
 
 ### Screenshots
 
@@ -13,22 +30,6 @@ The eeChat is a chat application with a local database
 ![Alt text](screenshots/5.png?raw=true "Portrait")
 ![Alt text](screenshots/6.png?raw=true "Portrait")
 
-
-
-### Installing
-
-his project is done in Kotlin 
-
-
-
-## Tech Stach
-* MVP - Model View Presenter design pattern
-* [Kotlin](https://kotlinlang.org/) - Language
-* [Dagger2](https://maven.apache.org/) - Dependency Management
-* [Coroutines] (https://kotlinlang.org/docs/reference/coroutines-overview.html) - Asynchronous or non-blocking
-* [ConstraintLayout](https://developer.android.com/training/constraint-layout/index.html) - Responsive UI layout manager
-* [Room](https://developer.android.com/jetpack/androidx/releases/room) - Persistence library provides an abstraction layer over SQLiteT
-* Unit tested
 
 
 ## Contributing
