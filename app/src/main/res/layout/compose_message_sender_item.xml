@@ -36,7 +36,7 @@
                 android:textStyle="bold"
                 app:layout_constraintTop_toTopOf="@id/textMessage"
                 app:layout_constraintRight_toLeftOf="@id/textMessage"
-                android:paddingStart="8dp"/>
+                android:paddingEnd="8dp"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
